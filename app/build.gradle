@@ -1,0 +1,55 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
+    useLibrary 'org.apache.http.legacy'
+    defaultConfig {
+        applicationId "com.example.cpu0131.sdk"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'x86'
+            universalApk true
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile "com.indooratlas.android:indooratlas-android-sdk:2.4.2@aar"
+    compile 'com.google.android.gms:play-services-maps:8.1.0'
+    compile 'com.google.maps.android:android-maps-utils:0.3.+'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.davemorrissey.labs:subsampling-scale-image-view:3.2.0'
+    compile 'com.pubnub:pubnub-android:3.7.5'
+    compile 'com.android.support:design:26.+'
+
+
+    // for Open Street Map support
+    compile 'org.osmdroid:osmdroid-android:5.6.4'
+    compile 'com.github.MKergall:osmbonuspack:6.4'
+}
+repositories {
+    maven { url "http://indooratlas-ltd.bintray.com/mvn-public" }
+    maven { url "https://jitpack.io" }
+}
