@@ -47,6 +47,7 @@ public class CredentialsFromCodeActivity extends AppCompatActivity implements IA
                 getString(R.string.indooratlas_api_secret));
         mLocationManager = IALocationManager.create(this, extras);
 
+
     }
 
     @Override
@@ -54,6 +55,7 @@ public class CredentialsFromCodeActivity extends AppCompatActivity implements IA
         super.onDestroy();
         mLocationManager.destroy();
     }
+
 
     @Override
     protected void onResume() {
